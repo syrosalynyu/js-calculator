@@ -4,6 +4,8 @@ const exampleAdditionInput = {
   operation: 'add',
 };
 
+
+// when Object is empty
 const objectCantBeEmpty = function(input) {
   if (Object.keys(input).length === 0) {
     console.log('Your input is empty! Please try again.');
@@ -11,6 +13,7 @@ const objectCantBeEmpty = function(input) {
   }
 }
 
+// validate num1 and num2. Both need to be numbers
 const mustBeNumber = function(input) {
   if (typeof input.num1 !== 'number' || typeof input.num2 !== 'number' ) {
     console.log('Please provide valid number(s)!');
@@ -18,42 +21,33 @@ const mustBeNumber = function(input) {
   }
 }
 
-
-
-const calculate = function(input) {
-  // when Object is empty
-  // if (Object.keys(input).length === 0) {
-  //   console.log('Your input is empty! Please try again.');
-  //   return false;
-  // }
-  objectCantBeEmpty(input)
-
-  // validate num1 and num2. Both need to be numbers
-  // if (typeof input.num1 !== 'number' || typeof input.num2 !== 'number' ) {
-  //   console.log('Please provide valid number(s)!');
-  //   return false;
-  // }
-  mustBeNumber(input)
-
-  // denominator can't be 0
+// denominator can't be 0
+const denominatorCantBeZero = function(input) {
   if (input.num2 === 0) {
     console.log('Denominator can\'t be 0!');
     return false
   }
+}
 
-  //validate the operation. Must be one of the following
-  if (input.operation !== 'add' &&
-      input.operation !== '+' &&
-      input.operation !== 'subtract' &&
-      input.operation !== '-' &&
-      input.operation !== 'multiply' &&
-      input.operation !== '*' &&
-      input.operation !== 'divide' &&
-      input.operation !== '/'
-  ) { 
+//list of supported operators
+const operators = ['add', '+', 'subtract', '-', 'multiply', '*', 'divide', '/']
+
+// validate the operator
+const operatorsValidation = function(input) {
+  if (!operators.includes(input.operation)) {
     console.log('Please provide valid operator!');
     return false;
   }
+}
+
+
+
+
+const calculate = function(input) { 
+  objectCantBeEmpty(input)
+  mustBeNumber(input)
+  denominatorCantBeZero(input)
+  operatorsValidation(input)
 
   let result = 0;
   switch (input.operation) {
