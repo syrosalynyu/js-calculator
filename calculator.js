@@ -1,7 +1,7 @@
 const exampleAdditionInput = {
   num1: -3,
-  num2: '5',
-  operation: 'add',
+  num2: 4,
+  operation: '/',
 };
 
 
@@ -9,7 +9,7 @@ const exampleAdditionInput = {
 const objectCantBeEmpty = function(input) {
   if (Object.keys(input).length === 0) {
     console.log('Your input is empty! Please try again.');
-    return false;
+    return true;
   }
 }
 
@@ -17,7 +17,7 @@ const objectCantBeEmpty = function(input) {
 const mustBeNumber = function(input) {
   if (typeof input.num1 !== 'number' || typeof input.num2 !== 'number' ) {
     console.log('Please provide valid number(s)!');
-    return false;
+    return true;
   }
 }
 
@@ -25,7 +25,7 @@ const mustBeNumber = function(input) {
 const denominatorCantBeZero = function(input) {
   if (input.num2 === 0) {
     console.log('Denominator can\'t be 0!');
-    return false
+    return true;
   }
 }
 
@@ -36,40 +36,36 @@ const operators = ['add', '+', 'subtract', '-', 'multiply', '*', 'divide', '/']
 const operatorsValidation = function(input) {
   if (!operators.includes(input.operation)) {
     console.log('Please provide valid operator!');
-    return false;
+    return true;
   }
 }
-
 
 
 
 const calculate = function(input) { 
-  objectCantBeEmpty(input)
-  mustBeNumber(input)
-  denominatorCantBeZero(input)
-  operatorsValidation(input)
-
-  let result = 0;
-  switch (input.operation) {
-    case 'add': case '+':
+  
+  let result;
+  if (objectCantBeEmpty(input)) {
+    return;
+  } else if (mustBeNumber(input)) {
+    return;
+  } else if (denominatorCantBeZero(input)) {
+    return;
+  } else if (operatorsValidation(input)) {
+    return;
+  } else if (input.operation === 'add' || input.operation === '+') {
       result = input.num1 + input.num2;
       console.log(`${input.num1} + ${input.num2} = ${result}`);
-      break;
-    case 'subtract': case '-':
+  } else if (input.operation === 'subtract' || input.operation === '-') {
       result = input.num1 - input.num2;
       console.log(`${input.num1} - ${input.num2} = ${result}`);
-      break;
-    case 'multiply': case '*':
+  } else if (input.operation === 'multiply' || input.operation === '*') {
       result = input.num1 * input.num2;
       console.log(`${input.num1} * ${input.num2} = ${result}`);
-      break;
-    case 'divide': case '/':
+  } else if (input.operation === 'divide' || input.operation === '/') {
       result = input.num1 / input.num2;
       console.log(`${input.num1} / ${input.num2} = ${result}`);
-      break;
   }
-
 }
-
 
 calculate(exampleAdditionInput);
