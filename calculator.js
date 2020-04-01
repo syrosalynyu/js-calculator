@@ -44,7 +44,7 @@ const operatorsValidation = function(input) {
 
 const calculate = function(input) { 
   
-  let result;
+  let result = 0;
   if (objectCantBeEmpty(input)) {
     return;
   } else if (mustBeNumber(input)) {
@@ -65,6 +65,8 @@ const calculate = function(input) {
   } else if (input.operation === 'divide' || input.operation === '/') {
       result = input.num1 / input.num2;
       console.log(`${input.num1} / ${input.num2} = ${result}`);
+  } else {
+      console.log('Invalid opteration!')
   }
 }
 
