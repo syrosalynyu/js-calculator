@@ -37,6 +37,26 @@ const calculate = function(input) {
     return false;
   }
 
+  let result = 0;
+  switch (input.operation) {
+    case 'add': case '+':
+      result = input.num1 + input.num2;
+      console.log(`${input.num1} + ${input.num2} = ${result}`);
+      break;
+    case 'subtract': case '-':
+      result = input.num1 - input.num2;
+      console.log(`${input.num1} - ${input.num2} = ${result}`);
+      break;
+    case 'multiply': case '*':
+      result = input.num1 * input.num2;
+      console.log(`${input.num1} * ${input.num2} = ${result}`);
+      break;
+    case 'divide': case '/':
+      result = input.num1 / input.num2;
+      console.log(`${input.num1} / ${input.num2} = ${result}`);
+      break;
+  }
+
 }
 
 
