@@ -66,7 +66,7 @@ const calculate = function(input) {
       result = input.num1 / input.num2;
       console.log(`${input.num1} / ${input.num2} = ${result}`);
   } else {
-      console.log('Invalid opteration!')
+      console.log('Invalid opteration!');
   }
 }
 
